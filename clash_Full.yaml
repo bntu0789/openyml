@@ -528,6 +528,9 @@ rules:
 
   # ========== AI 服务（blackmatrix7 - 专用规则优先）==========
   - "RULE-SET,Gemini,🤖 Google AI"
+  # Antigravity 补充规则（Google AI IDE）
+  - "DOMAIN-SUFFIX,aistudio.google.com,🤖 Google AI"
+  - "DOMAIN-KEYWORD,antigravity,🤖 Google AI"
   - "RULE-SET,Claude,� Ai平台"
   - "RULE-SET,OpenAI,💬 Ai平台"
   - "RULE-SET,Copilot,Ⓜ️ 微软Bing"
