@@ -193,6 +193,9 @@ rules:
   - RULE-SET,Claude,🤖 AI 服务
   - RULE-SET,OpenAI,🤖 AI 服务
   - RULE-SET,Copilot,🤖 AI 服务
+  # Antigravity 补充规则（Google AI IDE）
+  - DOMAIN-SUFFIX,aistudio.google.com,🤖 AI 服务
+  - DOMAIN-KEYWORD,antigravity,🤖 AI 服务
 
   # ========== 被墙网站走代理 ==========
   - RULE-SET,gfw,🚀 节点选择
