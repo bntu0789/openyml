@@ -3,6 +3,9 @@ proxy-groups:
     type: select
     proxies:
       - ♻️ 自动选择
+      - 🤖 AI 日本
+      - 🤖 AI 新加坡
+      - 🤖 AI 美国
       - 🇭🇰 香港节点
       - 🇨🇳 台湾节点
       - 🇸🇬 狮城节点
