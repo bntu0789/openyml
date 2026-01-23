@@ -14,10 +14,10 @@
 ## 🔗 CDN 链接（推荐）
 
 ```bash
-# 精简版（订阅覆盖）
+# 精简版（订阅覆盖，使用订阅的 DNS 配置）
 https://cdn.jsdelivr.net/gh/bntu0789/openyml@main/clash_Lite.yaml
 
-# 精简版 + DNS（独立使用，兼容 OpenClash/ShellCrash）
+# 精简版 + DNS（订阅覆盖或独立使用，含优化 DNS 配置）
 https://cdn.jsdelivr.net/gh/bntu0789/openyml@main/clash_Lite_DNS.yaml
 
 # 完整版
