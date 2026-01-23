@@ -1,0 +1,205 @@
+# ==================== Clash 精简版配置 ====================
+# 专注 AI 服务分流，其他服务采用通用规则
+# 策略组：13 个 | 规则提供者：8 个
+# ===========================================================
+
+proxy-groups:
+  # ========== 主选择器 ==========
+  - name: 🚀 节点选择
+    type: select
+    proxies:
+      - ♻️ 自动选择
+      - 🇯🇵 日本节点
+      - 🇸🇬 新加坡节点
+      - 🇺🇸 美国节点
+      - 🌏 亚洲节点
+      - 🚀 手动切换
+      - 🤖 AI 服务
+      - DIRECT
+
+  # 手动选择节点
+  - name: 🚀 手动切换
+    include-all: true
+    type: select
+
+  # 自动测速选择
+  - name: ♻️ 自动选择
+    type: url-test
+    include-all: true
+    interval: 600
+    tolerance: 100
+    lazy: true
+
+  # ========== AI 服务专用 ==========
+  - name: 🤖 AI 服务
+    type: select
+    proxies:
+      - 🤖 AI 美国
+      - 🤖 AI 日本
+      - 🤖 AI 新加坡
+      - 🇺🇸 美国节点
+      - 🇯🇵 日本节点
+      - 🇸🇬 新加坡节点
+      - 🚀 手动切换
+
+  # AI 专用地区节点（筛选 GM/GPT 关键字）
+  - name: 🤖 AI 日本
+    include-all: true
+    filter: (?i)(日本|JP|Japan).*(GM|GPT|AI)|.*(GM|GPT|AI).*(日本|JP|Japan)
+    type: url-test
+    interval: 600
+    tolerance: 100
+
+  - name: 🤖 AI 新加坡
+    include-all: true
+    filter: (?i)(新加坡|狮城|SG|Singapore).*(GM|GPT|AI)|.*(GM|GPT|AI).*(新加坡|狮城|SG|Singapore)
+    type: url-test
+    interval: 600
+    tolerance: 100
+
+  - name: 🤖 AI 美国
+    include-all: true
+    filter: (?i)(美|US|United States|America).*(GM|GPT|AI)|.*(GM|GPT|AI).*(美|US|United States|America)
+    type: url-test
+    interval: 600
+    tolerance: 100
+
+  # ========== 地区节点 ==========
+  - name: 🇯🇵 日本节点
+    include-all: true
+    filter: (?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan
+    type: url-test
+    interval: 600
+    tolerance: 100
+
+  - name: 🇸🇬 新加坡节点
+    include-all: true
+    filter: (?i)新加坡|坡|狮城|SG|Singapore
+    type: url-test
+    interval: 600
+    tolerance: 100
+
+  - name: 🇺🇸 美国节点
+    include-all: true
+    filter: (?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States
+    type: url-test
+    interval: 600
+    tolerance: 100
+
+  - name: 🌏 亚洲节点
+    include-all: true
+    filter: (?i)港|HK|Hong Kong|台|TW|Taiwan|日本|JP|Japan|新加坡|SG|Singapore|韩|KR|Korea
+    type: url-test
+    interval: 600
+    tolerance: 100
+
+  # ========== 广告拦截 ==========
+  - name: 🛑 广告拦截
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+      - 🚀 节点选择
+
+  # ========== 全球直连 ==========
+  - name: 🎯 全球直连
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 节点选择
+
+# ==================== 规则提供者 ====================
+# 使用 Loyalsoldier + blackmatrix7 规则集
+# ==================================================
+
+rule-providers:
+  # 私有网络/局域网（Loyalsoldier）
+  private:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
+    path: ./ruleset/private.yaml
+    interval: 86400
+
+  # 广告拦截（Loyalsoldier - 10万+规则，误杀率极低）
+  reject:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
+    path: ./ruleset/reject.yaml
+    interval: 86400
+
+  # AI 服务规则（blackmatrix7）
+  Gemini:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Gemini/Gemini.yaml"
+    path: ./ruleset/Gemini.yaml
+    interval: 86400
+
+  Claude:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Claude/Claude.yaml"
+    path: ./ruleset/Claude.yaml
+    interval: 86400
+
+  OpenAI:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml"
+    path: ./ruleset/OpenAI.yaml
+    interval: 86400
+
+  Copilot:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Copilot/Copilot.yaml"
+    path: ./ruleset/Copilot.yaml
+    interval: 86400
+
+  # GFW 被墙域名（Loyalsoldier）
+  gfw:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
+    path: ./ruleset/gfw.yaml
+    interval: 86400
+
+  # 中国大陆 IP 段（Loyalsoldier）
+  cncidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
+    path: ./ruleset/cncidr.yaml
+    interval: 86400
+
+# ==================== 分流规则 ====================
+rules:
+  # ========== Google Play 下载直连（解决下载问题）==========
+  - DOMAIN-SUFFIX,googleapis.cn,🎯 全球直连
+  - DOMAIN-SUFFIX,xn--ngstr-lra8j.com,🎯 全球直连
+  - DOMAIN-SUFFIX,gvt1.com,🎯 全球直连
+  - DOMAIN-SUFFIX,services.googleapis.cn,🎯 全球直连
+
+  # ========== 私有网络直连 ==========
+  - RULE-SET,private,🎯 全球直连
+
+  # ========== 广告拦截 ==========
+  - RULE-SET,reject,🛑 广告拦截
+
+  # ========== AI 服务专用分流 ==========
+  - RULE-SET,Gemini,🤖 AI 服务
+  - RULE-SET,Claude,🤖 AI 服务
+  - RULE-SET,OpenAI,🤖 AI 服务
+  - RULE-SET,Copilot,🤖 AI 服务
+
+  # ========== 被墙网站走代理 ==========
+  - RULE-SET,gfw,🚀 节点选择
+
+  # ========== 国内直连 ==========
+  - RULE-SET,cncidr,🎯 全球直连
+  - GEOIP,CN,🎯 全球直连
+
+  # ========== 兜底规则 ==========
+  - MATCH,🚀 节点选择
