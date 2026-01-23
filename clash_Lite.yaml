@@ -121,12 +121,20 @@ rule-providers:
     path: ./ruleset/private.yaml
     interval: 86400
 
-  # 广告拦截（Loyalsoldier - 10万+规则，误杀率极低）
-  reject:
+  # 广告拦截（ACL4SSR - 轻量级，仅 ~600条，解决内存崩溃问题）
+  BanAD:
     type: http
     behavior: domain
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
-    path: ./ruleset/reject.yaml
+    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanAD.list"
+    path: ./ruleset/BanAD.list
+    interval: 86400
+
+  # 应用净化（ACL4SSR - 轻量级，~1000条）
+  BanProgramAD:
+    type: http
+    behavior: domain
+    url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanProgramAD.list"
+    path: ./ruleset/BanProgramAD.list
     interval: 86400
 
   # AI 服务规则（blackmatrix7）
@@ -186,7 +194,8 @@ rules:
   - RULE-SET,private,🎯 全球直连
 
   # ========== 广告拦截 ==========
-  - RULE-SET,reject,🛑 广告拦截
+  - RULE-SET,BanAD,🛑 广告拦截
+  - RULE-SET,BanProgramAD,🛑 广告拦截
 
   # ========== AI 服务专用分流 ==========
   - RULE-SET,Gemini,🤖 AI 服务
