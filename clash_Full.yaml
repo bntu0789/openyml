@@ -207,15 +207,7 @@ proxy-groups:
       - 🇯🇵 日本节点
       - 🇰🇷 韩国节点
       - 🚀 手动切换
-  - name: 🎶 网易音乐
-    type: select
-    include-all: true
-    filter: (?i)网易|音乐|NetEase|Music
-    proxies:
-      - DIRECT
-      - 🚀 节点选择
-      - ♻️ 自动选择
-  - name: 🎯 全球直连
+  - name:  全球直连
     type: select
     proxies:
       - DIRECT
@@ -420,12 +412,6 @@ rule-providers:
     path: ./ruleset/BiliBili.yaml
     interval: 86400
 
-  NetEaseMusic:
-    type: http
-    behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/NetEaseMusic/NetEaseMusic.yaml"
-    path: ./ruleset/NetEaseMusic.yaml
-    interval: 86400
 
   ChinaMedia:
     type: http
@@ -497,6 +483,13 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  # GFWList 代理规则 (Loyalsoldier)
+  ProxyGFWlist:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
+    path: ./ruleset/ProxyGFWlist.txt
+    interval: 86400
 
 rules:
   - "PROCESS-NAME,subs-check.exe,🎯 全球直连"
@@ -516,7 +509,7 @@ rules:
   - "RULE-SET,Claude,💬 Ai平台"
   - "RULE-SET,OpenAI,💬 Ai平台"
   - "RULE-SET,Copilot,💬 Ai平台"
-  - "RULE-SET,NetEaseMusic,🎶 网易音乐"
+
   - "RULE-SET,Epic,🎮 游戏平台"
   - "RULE-SET,EA,🎮 游戏平台"
   - "RULE-SET,Sony,🎮 游戏平台"
