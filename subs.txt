@@ -17,3 +17,4 @@ https://gates.djjc.cfd/api/v1/client/subscribe?token=b323b3916d289f3a80dc21cdd3f
 https://dash.knjc.cfd/api/v1/client/subscribe?token=eb772a802dc691e6cf915e65d4620b62
 https://afeisubscription.18934569.xyz/api/v1/client/subscribe?token=0fa4c70fe6905f7f5202f6ed00b5c671
 https://0b96e976-9ec3-44c0-aa2b-30bf8b0792ea.com/api/v1/client/subscribe?token=614f51556e75bc45f3a7146232cacd92
+https://xiongchumo.shop/s/8a7a3de6c63fc30610d67eee85adc009
