@@ -38,21 +38,21 @@ proxy-groups:
   # ========== AI 专用区域分组 ==========
   - name: 🤖 AI 日本
     include-all: true
-    filter: (?i)(日本|JP|Japan).*(GM|GPT)|.*(GM|GPT).*(日本|JP|Japan)
+    filter: (?i)(?=.*GM)(?=.*GPT)(日本|JP|Japan).*|(?=.*GM)(?=.*GPT).*(日本|JP|Japan)
     type: url-test
     interval: 600
     tolerance: 100
 
   - name: 🤖 AI 新加坡
     include-all: true
-    filter: (?i)(新加坡|狮城|SG|Singapore).*(GM|GPT)|.*(GM|GPT).*(新加坡|狮城|SG|Singapore)
+    filter: (?i)(?=.*GM)(?=.*GPT)(新加坡|狮城|SG|Singapore).*|(?=.*GM)(?=.*GPT).*(新加坡|狮城|SG|Singapore)
     type: url-test
     interval: 600
     tolerance: 100
 
   - name: 🤖 AI 美国
     include-all: true
-    filter: (?i)(美|US|United States).*(GM|GPT)|.*(GM|GPT).*(美|US|United States)
+    filter: (?i)(?=.*GM)(?=.*GPT)(美|US|United States).*|(?=.*GM)(?=.*GPT).*(美|US|United States)
     type: url-test
     interval: 600
     tolerance: 100
