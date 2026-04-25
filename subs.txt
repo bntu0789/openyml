@@ -19,7 +19,7 @@ https://afeisubscription.18934569.xyz/api/v1/client/subscribe?token=0fa4c70fe690
 https://0b96e976-9ec3-44c0-aa2b-30bf8b0792ea.com/api/v1/client/subscribe?token=614f51556e75bc45f3a7146232cacd92
 https://xiongchumo.shop/s/8a7a3de6c63fc30610d67eee85adc009
 
-https://raw.githubusercontent.com/bntu0789/openyml/refs/heads/main/ldo.txt
+https://raw.githubusercontent.com/bntu0789/openyml/main/ldo.txt
 https://api-hy.02000.top/adf0b1976c43e82dab91f7c6e3b4d258?token=e40b5ea889ec70d86f1257e1ce45f09c
 https://dy11.baipiaoyes.com/api/v1/client/subscribe?token=051cd149def418fa95da838ca154570f
 https://sub3.smallstrawberry.com/api/v1/client/subscribe?token=e230fd2b9d507180f04b8567ea75a86c
